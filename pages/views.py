@@ -15,7 +15,6 @@ def gray(image_path):
     return gray_image
 
 
-
 @api_view(['POST'])
 def gray_filter(request):
     if 'image' in request.FILES:
@@ -25,7 +24,7 @@ def gray_filter(request):
 
         converted_img = gray(image_path)
         converted_img_path=f'{os.path.splitext(image_path)[0]}_gray.jpg'
-        cv2.imwrite(image_path,converted_img)
+        cv2.imwrite(converted_img_path,converted_img)
 
         image_instance = ImagesModels(image=image_file, new_image=image_path)
         image_instance.save()
